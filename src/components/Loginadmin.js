@@ -45,11 +45,14 @@ class Loginadmin extends Component {
 
 
 
+
+
 render (){
  return(
    <div className="container">
      <div className="mt-5">
        <form className="form-group" onSubmit={this.submit} >
+       
          <input onChange={this.handleOnChange} className="form-control mb-3" type="text" name="email" placeholder="entrer un email"/>
          <input onChange={this.handleOnChange} className="form-control mb-3" type="password" name="password" placeholder="entrer un mots de pass"/>
          <div className="row text-center">

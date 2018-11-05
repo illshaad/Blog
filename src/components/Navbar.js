@@ -1,8 +1,12 @@
 import React from 'react';
 
-const Navbar = () => {
+const Navbar = (props) => {
  return(
+    
    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+   {
+        props.loggedIn ? "Connecté" : "Pas connecté" 
+    }
        <div className="container">
            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar10">
                <span className="navbar-toggler-icon"></span>

@@ -6,12 +6,14 @@ class Showarticles extends Component {
     constructor(props){ 
         super(props) 
         this.state = {
-            articles :  [],
+            articles :  [
+
+            ],
+
         }
     }
 
-
- testDelete = () => {
+ articles = () => {//Recharche mes articles
 
     fetch('http://localhost:5678/api/article')
     .then(res => res.json()) 
@@ -21,15 +23,14 @@ class Showarticles extends Component {
             articles : body
         })   
     })
-    .catch(err =>{throw err})
-
+    .catch(err =>{
+        throw err
+    })
     } 
 
     componentDidMount(){
-    this.testDelete()
+    this.articles()
     }
-
-
 
     delete = (id) => {
         axios.delete(`http://localhost:5678/api/article/${id}`)
@@ -37,10 +38,32 @@ class Showarticles extends Component {
             .catch(error => console.log(error))
             console.log(id)
     
-        this.testDelete()
+        this.articles()
     }
+    // modifed = (id) => {
+    //     axios.put(`http://localhost:5678/api/article/${id}`)
+    //         .then(response => console.log(response))
+    //         .catch(error => console.log(error))
+    //         console.log(id)
+    
+    //     this.testModifed()
+    // }
 
+    // testModifed = () => {
 
+    //     fetch('http://localhost:5678/api/article')
+    //     .then(res => res.json()) 
+    //     .then(body =>{ 
+    //         console.log(body)
+    //         this.setState({
+    //             articles : body
+    //         })   
+    //     })
+    //     .catch(err =>{
+    //         throw err
+    //     })
+    //     } 
+    
     render (){
         return (
         <div className="container">
@@ -52,7 +75,8 @@ class Showarticles extends Component {
                     <li>Date:{article.Date}</li>
                     <li>Auteur:{article.Auteur}</li>
                     <li>Text:{article.Text}</li>
-                    <button className="btn btn-info btn-sm" onClick={this.delete.bind(this, article._id)}>Supprimé</button>
+                    <button className="btn btn-info btn-sm" onClick={this.delete.bind(this, article._id)}>Supprimer</button>
+                    {/* <button className="btn btn-info btn-sm"onClick={article._id}>Modifier</button> */}
 
                 </ul>
                 })}
